@@ -431,38 +431,36 @@ This unofficial build isn't supported by GloriousEggroll nor Valve and wasn't te
 
 ## Building
 
-1. Clone this repository by executing:
+1. Clone this repository and navigate to it by executing:
 
-```sh
-git clone --recurse-submodules https://github.com/gloriouseggroll/proton-ge-custom
-```
+	```sh
+	git clone --recurse-submodules https://github.com/gloriouseggroll/proton-ge-custom
+	```
 
-2. Drop any custom patches into patches/, then open patches/protonprep-valve-staging.sh and add a patch line for them under `#WINE CUSTOM PATCHES` in the same way the others are done.
+2. Navigate to it: `cd proton-ge-custom`
+   
+   Optional: Drop any custom patches into patches/, then open patches/protonprep-valve-staging.sh and add a patch line for them under `#WINE CUSTOM PATCHES` in the same way the others are done.
 
 3. Apply all of the patches in patches/ by running:
+	
+	```sh
+	./patches/protonprep-valve-staging.sh &> patchlog.txt
+	```
+	Check it worked: Open `patchlog.txt` and search for "fail" to make sure no patch failures occured. An easy way to do this is like so:
+	
+	```sh
+	grep -i fail patchlog.txt
+	grep -i error patchlog.txt 
+	```
 
-```sh
-./patches/protonprep-valve-staging.sh &> patchlog.txt
-```
-
-in the main proton-ge-custom directory. Open `patchlog.txt` and search for "fail" to make sure no patch failures occured. An easy way to do this is like so:
-
-```sh
-grep -i fail patchlog.txt
-grep -i error patchlog.txt 
-```
-
-4. Navigate to the parent directory containing the proton-ge-custom folder.
-
-5. Type the following:
-
-```sh
-mkdir build && cd build
-../configure.sh --build-name=SOME-BUILD-NAME-HERE
-make redist &> log
-```
-
-The build will be placed within the build directory as SOME-BUILD-NAME-HERE.tar.gz.
+4. Prepare the build:
+	```sh
+	mkdir build && cd build
+	../configure.sh --build-name=SOME-BUILD-NAME-HERE
+	```
+5. Choose one of the following:
+	- `make install` The built proton will be installed directly into the default steam dir at `~/.steam/root`
+	- `make redist` The built proton will be placed within the build directory as SOME-BUILD-NAME-HERE.tar.gz.
 
 ## Enabling
 
