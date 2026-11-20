@@ -431,11 +431,11 @@ This unofficial build isn't supported by GloriousEggroll nor Valve and wasn't te
 
 ## Building
 
-1. Clone this repository and navigate to it by executing:
+1. Clone this repository by executing:
 
-	```sh
-	git clone --recurse-submodules https://github.com/gloriouseggroll/proton-ge-custom
-	```
+   ```sh
+   git clone --recurse-submodules https://github.com/gloriouseggroll/proton-ge-custom
+   ```
 
 2. Navigate to it: `cd proton-ge-custom`
    
@@ -443,24 +443,25 @@ This unofficial build isn't supported by GloriousEggroll nor Valve and wasn't te
 
 3. Apply all of the patches in patches/ by running:
 	
-	```sh
-	./patches/protonprep-valve-staging.sh &> patchlog.txt
-	```
-	Check it worked: Open `patchlog.txt` and search for "fail" to make sure no patch failures occured. An easy way to do this is like so:
-	
-	```sh
-	grep -i fail patchlog.txt
-	grep -i error patchlog.txt 
-	```
+   ```sh
+   ./patches/protonprep-valve-staging.sh &> patchlog.txt
+   ```
+   Check it worked: Open `patchlog.txt` and search for "fail" to make sure no patch failures occured. An easy way to do this is like so:
+
+   ```sh
+   grep -i fail patchlog.txt
+   grep -i error patchlog.txt 
+   ```
 
 4. Prepare the build:
-	```sh
-	mkdir build && cd build
-	../configure.sh --build-name=SOME-BUILD-NAME-HERE
-	```
-5. Choose one of the following:
-	- `make install` The built proton will be installed directly into the default steam dir at `~/.steam/root`
-	- `make redist` The built proton will be placed within the build directory as SOME-BUILD-NAME-HERE.tar.gz.
+
+   ```sh
+   mkdir build && cd build
+   ../configure.sh --build-name=SOME-BUILD-NAME-HERE
+   ```
+6. Choose one of the following:
+    - `make install &> log` The built proton will be installed directly into the default steam dir at `~/.steam/root/compatibilitytools.d/`. Restart steam to be able to select it.
+    - `make redist &> log` The built proton will be placed within the build directory as SOME-BUILD-NAME-HERE.tar.gz.
 
 ## Enabling
 
