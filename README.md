@@ -462,6 +462,8 @@ This unofficial build isn't supported by GloriousEggroll nor Valve and wasn't te
 6. Choose one of the following:
     - `make install &> log` The built proton will be installed directly into the default steam dir at `~/.steam/root/compatibilitytools.d/`. Restart steam to be able to select it.
     - `make redist &> log` The built proton will be placed within the build directory as SOME-BUILD-NAME-HERE.tar.gz.
+   
+   You can also build with debug symbols, for example using `make UNSTRIPPED_BUILD=1 install &> log`
 
 ## Enabling
 
